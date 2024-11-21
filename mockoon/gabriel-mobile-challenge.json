@@ -1,6 +1,6 @@
 {
   "uuid": "a447257c-d99b-417e-badb-639c7005bdd0",
-  "lastMigration": 27,
+  "lastMigration": 33,
   "name": "Gabriel mobile challenge",
   "endpointPrefix": "",
   "latency": 0,
@@ -17,7 +17,7 @@
       "responses": [
         {
           "uuid": "0a0606d3-31ee-4e8f-9852-2bc07839a224",
-          "body": "{{setVar 'limit' (queryParam 'limit')}}\n{\n  \"data\": [\n    {{#repeat @limit}}\n    {\n      \"uri\": \"https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8\",\n      \"fileName\": \"{{@index}}#11-04-2023#03-00-08#11-04-2023#03-05-00.ts\",\n      \"videoInfo\": {\n        \"title\": \"Gabriel`s video history {{@index}}\",\n        \"subtitle\": \"{{faker 'lorem.sentence'}}\",\n        \"description\": \"{{faker 'lorem.sentence'}}\"\n      },\n      \"locationInfo\": {\n        \"id\": \"{{faker 'datatype.uuid'}}\",\n        \"name\": \"Condomínio edifício {{faker 'name.lastName'}}\",\n        \"address\": {\n          \"city\": \"{{faker 'address.city'}}\",\n          \"state\": \"{{faker 'address.stateAbbr'}}\",\n          \"address\": \"{{faker 'address.streetAddress'}}\",\n          \"latitude\": \"{{faker 'address.latitude'}}\",\n          \"longitude\": \"{{faker 'address.longitude'}}\"\n        }\n      }\n    }\n    {{/repeat}}\n  ],\n  \"status\": {\n    \"message\": null,\n    \"code\": 200\n  }\n}",
+          "body": "{{setVar 'limit' (queryParam 'limit')}}\n{\n  \"data\": [\n    {{#repeat @limit}}\n    {\n      \"uri\": \"https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8\",\n      \"fileName\": \"{{@index}}#11-04-2023#03-00-08#11-04-2023#03-05-00.ts\",\n      \"videoInfo\": {\n        \"title\": \"Gabriel`s video history {{@index}}\",\n        \"subtitle\": \"{{faker 'lorem.sentence'}}\",\n        \"description\": \"{{faker 'lorem.sentence'}}\"\n      },\n      \"locationInfo\": {\n        \"id\": \"{{faker 'string.uuid'}}\",\n        \"name\": \"Condomínio edifício {{faker 'person.lastName'}}\",\n        \"address\": {\n          \"city\": \"{{faker 'location.city'}}\",\n          \"state\": \"{{faker 'location.state'}}\",\n          \"address\": \"{{faker 'location.streetAddress'}}\",\n          \"latitude\": \"{{faker 'location.latitude'}}\",\n          \"longitude\": \"{{faker 'location.longitude'}}\"\n        }\n      }\n    }\n    {{/repeat}}\n  ],\n  \"status\": {\n    \"message\": null,\n    \"code\": 200\n  }\n}",
           "latency": 0,
           "statusCode": 202,
           "label": "",
@@ -30,7 +30,9 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
         },
         {
           "uuid": "ac81fdd5-3f2d-43d8-81f9-f6830c293e8b",
@@ -55,7 +57,9 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": false
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
         },
         {
           "uuid": "6cc7bc1d-5bd1-4331-87e8-e27dbd65bfe3",
@@ -80,11 +84,14 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": false
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
         }
       ],
-      "enabled": true,
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     }
   ],
   "rootChildren": [
@@ -124,5 +131,6 @@
       "value": ""
     }
   ],
-  "data": []
+  "data": [],
+  "callbacks": []
 }
